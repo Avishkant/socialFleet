@@ -1,0 +1,81 @@
+@import "../../style.scss";
+
+.stories {
+  @include themify($themes) {
+    .slider {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 30px;
+      width: 40vw;
+      overflow-x: scroll;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      @include mobile {
+        justify-content: space-between;
+      }
+
+      @include tablet {
+        gap: 20px;
+      }
+
+      .uploadIcon {
+        position: absolute;
+        top: 40%;
+        right: 10px;
+        color: white;
+        background-color: #5271ff;
+        border: none;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        font-size: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .story {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        cursor: pointer;
+        img {
+          width: 60px;
+          height: 60px;
+          border: 2px solid;
+          border-color: rgba(253, 128, 128, 0.5);
+          border-radius: 50%;
+          border-image-slice: 50%;
+          animation: rainbow-animation 10s linear infinite;
+          object-fit: cover;
+        }
+        span {
+          color: themed("textColor");
+          font-weight: 500;
+          font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+            "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        }
+      }
+    }
+  }
+}
+@keyframes rainbow-animation {
+  20% {
+    border-color: rgba(255, 0, 0, 0.548);
+  }
+  40% {
+    border-color: orange;
+  }
+  60% {
+    border-color: yellow;
+  }
+  80% {
+    border-color: green;
+  }
+  100% {
+    border-color: rgb(59, 161, 187);
+  }
+}

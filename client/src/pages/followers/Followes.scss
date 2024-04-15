@@ -1,0 +1,115 @@
+.f-main-container {
+  display: flex;
+  height: 100%;
+
+  .list-container {
+    // height: 100vh;
+    overflow-y: scroll;
+    position: relative;
+    flex: 4;
+    .serach-in-follower {
+      background-color: #fff;
+      position: sticky;
+      z-index: 1;
+      top: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 20px; // Add padding for better spacing
+
+      label {
+        text-transform: capitalize;
+        font-size: 1.3rem;
+        color: #3f51b5; // Blue color
+      }
+
+      input {
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 12px;
+        border: 2px solid #3f51b5; // Blue border
+        outline: none;
+        transition: border-color 0.3s ease-in-out;
+
+        &:focus {
+          border-color: #5c6bc0; // Darker blue on focus
+        }
+      }
+    }
+    .list {
+      // height: 200vh;
+      &-item {
+        .user {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin: 20px 0px;
+
+          .userInfo {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+
+            img {
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              object-fit: cover;
+            }
+
+            .name {
+              font-size: 1.2rem;
+              text-transform: capitalize;
+              font-family: sans-serif;
+            }
+
+            .online {
+              width: 12px;
+              height: 12px;
+              border-radius: 50%;
+              background-color: limegreen;
+              position: absolute;
+              top: 0;
+              left: 30px;
+            }
+
+            p {
+              color: themed("textColorSoft");
+            }
+
+            span {
+              font-weight: 500;
+              color: themed("textColor");
+            }
+          }
+
+          .buttons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            button {
+              border: none;
+              padding: 5px;
+              color: white;
+              cursor: pointer;
+
+              &:first-child {
+                background-color: #5271ff;
+              }
+
+              &:last-child {
+                background-color: #f0544f;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .post-container {
+    flex: 4;
+  }
+}
