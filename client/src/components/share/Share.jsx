@@ -6,9 +6,12 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import useMakeRequest from "../../hook/useFetch";
+import Popup from "../Popup/Popup"; // Import Popup component
+
 const Share = () => {
   const [file, setFile] = useState(null);
   const [desc, setDesc] = useState("");
+  const [captionOpen, setCaptionOpen] = useState(false); // State to manage the caption popup
   const makeRequest = useMakeRequest();
 
   const upload = async () => {
@@ -46,6 +49,11 @@ const Share = () => {
     mutation.mutate({ desc, img: imgUrl });
     setDesc("");
     setFile(null);
+  };
+
+  const handleCaptionGenerated = (generatedCaption) => {
+    setDesc(generatedCaption); // Update desc with the generated caption
+    setCaptionOpen(false); // Close the caption popup after generating caption
   };
 
   return (
@@ -90,12 +98,15 @@ const Share = () => {
               <img src={Friend} alt="" />
               <span>Tag Friends</span>
             </div>
-            <div className="item">
-              <button onClick={handleClick}>Share</button>
-            </div>
+          </div>
+          <div className="right">
+            <button className="generate-caption-btn" onClick={() => setCaptionOpen(true)}>Generate Caption</button>
+            <button onClick={handleClick}>Share</button>
           </div>
         </div>
       </div>
+      {/* Render Popup only when captionOpen is true */}
+      {captionOpen && <Popup open={captionOpen} handleClose={() => setCaptionOpen(false)} handleCaptionGenerated={handleCaptionGenerated} />}
     </div>
   );
 };

@@ -1,0 +1,64 @@
+.caption-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    .popup-content {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 400px;
+      text-align: center;
+      position: relative;
+  
+      h2 {
+        margin-bottom: 20px;
+      }
+  
+      input[type="text"] {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+  
+      .generate-btn {
+        background-color: #28a745;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+  
+      .generate-btn:hover {
+        background-color: #218838;
+      }
+  
+      .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: none;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+      }
+  
+      .generated-caption {
+        margin-top: 20px;
+        background-color: #f0f0f0;
+        color: #333;
+        border: none;
+        cursor: not-allowed;
+      }
+    }
+  }
+  

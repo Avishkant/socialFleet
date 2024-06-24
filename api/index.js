@@ -19,6 +19,8 @@ import { deleteOldStories } from "./controllers/story.js";
 import { db } from "./connect.js";
 import { getSuggestions } from "./controllers/suggestions.js";
 import moment from "moment";
+import bodyParser from "body-parser";
+import axios from "axios";
 if (process.env.NODE_ENV !== "production") {
   app.use(morgan("dev"));
 }
@@ -31,7 +33,41 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Credentials", true);
   next();
 });
+
 app.use(express.json());
+app.use(bodyParser.json());
+app.use(cookieParser());
+
+// OPen AI API Request 
+
+app.post('/generate-caption', async (req, res) => {
+  const { keywords } = req.body;
+
+  try {
+    const response = await axios.post('https://api.openai.com/v1/engines/davinci-codex/completions', {
+      prompt: `Generate a social media caption of 2-3 lines using the following keywords: ${keywords}`,
+      max_tokens: 50,
+    }, {
+      headers: {
+        'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const caption = response.data.choices[0].text.trim();
+    res.json({ caption });
+  } catch (error) {
+    console.error('Error generating caption:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+// 
+
+
+
+
+
 // app.use(cors({ origin: "http://localhost:5173" })); //
 app.use(cors({
   origin: "http://127.0.0.1:5173",
