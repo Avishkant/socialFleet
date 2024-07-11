@@ -1,5 +1,5 @@
 # SocialFleet - A Social Media Platform (React, Node, Express, MySQL)
-## Like all the social media websites, our application is also similar to that but I have added an extra feature of AI Caption Generation using the user provided keywords.
+## Like all the social media websites, my website is similar to that but I have added an extra feature of AI Caption Generation using the user-provided keywords.
 
 ## Home Page
 ![Home Page](https://github.com/Avishkant/socialFleet/assets/109219822/db11c9f7-f384-4b93-983b-b5c07902cff3)
